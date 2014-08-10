@@ -1,0 +1,2 @@
+griffon.plugins.quartz
+org.codehaus.griffon.runtime.quartz
