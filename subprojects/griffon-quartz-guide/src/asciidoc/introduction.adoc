@@ -1,0 +1,6 @@
+
+[[_introduction]]
+= Introduction
+
+This plugin allows your Griffon application to schedule jobs to be executed using a specified interval or
+cron expression. The underlying system uses the {link_quartz}.
