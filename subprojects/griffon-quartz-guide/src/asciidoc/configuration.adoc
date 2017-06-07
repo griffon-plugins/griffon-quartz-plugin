@@ -1,7 +1,6 @@
 
 [[_configuration]]
 = Build Configuration
-:groupId: org.codehaus.griffon.plugins
 
 == Gradle
 
@@ -10,13 +9,13 @@ You have two options for configuring this plugin: automatic and manual.
 === Automatic
 
 As long as the project has the `org.codehaus.griffon.griffon` plugin applied to it you
-may include the following snippet in +build.gradle+
+may include the following snippet in `build.gradle`
 
 [source,groovy,options="nowrap"]
 [subs="attributes"]
 ----
 dependencies {
-    griffon '{groupId}:griffon-quartz-plugin:{project-version}'
+    griffon '{project-group}:griffon-quartz-plugin:{project-version}'
 }
 ----
 
@@ -30,7 +29,7 @@ You will need to configure any of the following blocks depending on your setup
 [subs="attributes"]
 ----
 dependencies {
-    compile '{groupId}:griffon-quartz-core:{project-version}'
+    compile '{project-group}:griffon-quartz-core:{project-version}'
 }
 ----
 
@@ -45,7 +44,7 @@ snippet before the `<build>` element
 <dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>{groupId}</groupId>
+            <groupId>{project-group}</groupId>
             <artifactId>griffon-quartz-plugin</artifactId>
             <version>{project-version}</version>
             <type>pom</type>
@@ -61,7 +60,7 @@ Next configure dependencies as required by your particular setup
 [subs="attributes,verbatim"]
 ----
 <dependency>
-    <groupId>{groupId}</groupId>
+    <groupId>{project-group}</groupId>
     <artifactId>griffon-quartz-core</artifactId>
 </dependency>
 ----

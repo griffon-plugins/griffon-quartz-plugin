@@ -5,6 +5,7 @@ griffon {
     disableDependencyResolution = false
     includeGroovyDependencies = false
     version = rootProject.griffonVersion
+    applicationProject = false
 }
 
 apply from: rootProject.file('gradle/code-coverage.gradle')
@@ -14,9 +15,11 @@ dependencies {
 
     testCompileOnly "org.codehaus.griffon:griffon-groovy-compile:${griffon.version}"
 
-    testCompile 'com.jayway.awaitility:awaitility-groovy:1.6.1'
+    testCompile("org.awaitility:awaitility-groovy:$awaitilityVersion") {
+        exclude group: 'org.codehaus.groovy', module: 'groovy-all'
+    }
 
     testRuntime "org.codehaus.griffon:griffon-guice:${griffon.version}"
     testRuntime "org.codehaus.griffon:griffon-groovy:${griffon.version}"
-    testRuntime 'org.slf4j:slf4j-simple:1.7.7'
+    testRuntime "org.slf4j:slf4j-simple:$slf4jVersion"
 }

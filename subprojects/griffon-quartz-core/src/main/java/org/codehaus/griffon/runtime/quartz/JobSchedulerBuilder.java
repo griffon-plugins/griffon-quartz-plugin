@@ -1,3 +1,18 @@
+/*
+ * Copyright 2014-2017 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.codehaus.griffon.runtime.quartz;
 
 import org.quartz.Job;
@@ -11,6 +26,7 @@ import javax.annotation.Nonnull;
 import java.util.TimeZone;
 
 import static griffon.plugins.quartz.Scheduled.DEFAULT;
+import static griffon.util.GriffonClassUtils.requireState;
 import static java.lang.String.format;
 import static java.util.TimeZone.getDefault;
 import static org.quartz.CronScheduleBuilder.cronSchedule;
@@ -25,7 +41,6 @@ import static org.quartz.utils.Key.DEFAULT_GROUP;
  * and associate the related {@code Trigger} with it.
  */
 public final class JobSchedulerBuilder {
-
     /**
      * The type of the {@code Job} to be executed.
      */
@@ -84,16 +99,12 @@ public final class JobSchedulerBuilder {
 
     /**
      * The {@code Trigger} to be used to schedule the {@code Job}
-     *
-     * @since 1.2
      */
     private Trigger trigger;
 
     /**
      * Indicates whether the job's trigger should be updated if it is already existing when being
      * scheduled (which is typically the case with a persistent {@link org.quartz.spi.JobStore}.
-     *
-     * @since 1.3
      */
     private boolean updateExistingTrigger = false;
 
@@ -104,7 +115,7 @@ public final class JobSchedulerBuilder {
      *
      * @param jobClass The type of the {@code Job} to be executed
      */
-    JobSchedulerBuilder(final Class<? extends Job> jobClass) {
+    public JobSchedulerBuilder(final Class<? extends Job> jobClass) {
         this.jobClass = jobClass;
     }
 
@@ -112,6 +123,7 @@ public final class JobSchedulerBuilder {
      * Sets the {@code Job} name, must be unique within the group.
      *
      * @param jobName The {@code Job} name, must be unique within the group
+     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withJobName(String jobName) {
@@ -123,6 +135,7 @@ public final class JobSchedulerBuilder {
      * Sets the {@code Job} group.
      *
      * @param jobGroup The {@code Job} group
+     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withJobGroup(String jobGroup) {
@@ -136,6 +149,7 @@ public final class JobSchedulerBuilder {
      * encountered.
      *
      * @param requestRecovery The activation flag
+     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withRequestRecovery(boolean requestRecovery) {
@@ -148,6 +162,7 @@ public final class JobSchedulerBuilder {
      * orphaned (no {@code Trigger}s point to it).
      *
      * @param storeDurably The activation flag
+     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withStoreDurably(boolean storeDurably) {
@@ -159,6 +174,7 @@ public final class JobSchedulerBuilder {
      * Sets the {@code Trigger} name, must be unique within the group.
      *
      * @param triggerName The {@code Trigger} name, must be unique within the group
+     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withTriggerName(String triggerName) {
@@ -170,6 +186,7 @@ public final class JobSchedulerBuilder {
      * Sets the {@code Trigger} group.
      *
      * @param triggerGroup The {@code Trigger} group
+     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withTriggerGroup(String triggerGroup) {
@@ -181,6 +198,7 @@ public final class JobSchedulerBuilder {
      * Sets the cron expression to base the schedule on.
      *
      * @param cronExpression The cron expression to base the schedule on
+     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withCronExpression(String cronExpression) {
@@ -194,6 +212,7 @@ public final class JobSchedulerBuilder {
      *
      * @param timeZone The time zone for which the {@code cronExpression}
      *                 of this {@code CronTrigger} will be resolved.
+     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withTimeZone(TimeZone timeZone) {
@@ -207,6 +226,7 @@ public final class JobSchedulerBuilder {
      * first.
      *
      * @param priority The {@code Trigger}'s priority
+     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withPriority(int priority) {
@@ -224,8 +244,8 @@ public final class JobSchedulerBuilder {
      * or {@link #withTimeZone(TimeZone)}
      *
      * @param trigger The {@code Trigger} to associate with the {@code Job}
+     *
      * @return This builder instance
-     * @since 1.2
      */
     public JobSchedulerBuilder withTrigger(Trigger trigger) {
         this.trigger = trigger;
@@ -237,7 +257,6 @@ public final class JobSchedulerBuilder {
      * be replaced with the new trigger.
      *
      * @return This builder instance
-     * @since 1.3
      */
     public JobSchedulerBuilder updateExistingTrigger() {
         this.updateExistingTrigger = true;
@@ -250,6 +269,7 @@ public final class JobSchedulerBuilder {
      * <p/>
      *
      * @param scheduler The given {@code Scheduler}
+     *
      * @throws SchedulerException If any error occurs
      */
     public void schedule(@Nonnull Scheduler scheduler) throws SchedulerException {

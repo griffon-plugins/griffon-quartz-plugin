@@ -12,7 +12,7 @@ binding if the wrong type has been applied by the Griffon runtime.
 
 == Quartz
 
-Module name: +quartz+
+Module name: `quartz`
 
 [source,java,options="nowrap"]
 ----

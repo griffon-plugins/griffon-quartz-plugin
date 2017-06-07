@@ -1,11 +1,11 @@
 /*
- * Copyright $today.year the original author or authors.
+ * Copyright 2014-2017 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -36,11 +36,11 @@ import static java.util.TimeZone.getTimeZone;
  * @author Andres Almiray
  */
 @Named("quartz")
-public class QuartzAdon extends AbstractGriffonAddon {
+public class QuartzAddon extends AbstractGriffonAddon {
     @Inject
     private Scheduler scheduler;
 
-    public void onBootstrapEnd(@Nonnull GriffonApplication application) {
+    public void onStartupStart(@Nonnull GriffonApplication application) {
         ServiceLoaderUtils.load(resolveClassLoader(application), "META-INF/services/", Job.class, new ServiceLoaderUtils.LineProcessor() {
             @Override
             public void process(@Nonnull ClassLoader classLoader, @Nonnull Class<?> type, @Nonnull String line) {
@@ -69,7 +69,7 @@ public class QuartzAdon extends AbstractGriffonAddon {
                 .withJobGroup(scheduled.jobGroup())
                 .withRequestRecovery(scheduled.requestRecovery())
                 .withStoreDurably(scheduled.storeDurably())
-                    // trigger
+                // trigger
                 .withCronExpression(scheduled.cronExpression())
                 .withTriggerName(scheduled.triggerName());
 
@@ -87,7 +87,7 @@ public class QuartzAdon extends AbstractGriffonAddon {
     protected Class<?> loadClass(@Nonnull String className, @Nonnull ClassLoader classLoader) throws ClassNotFoundException {
         ClassNotFoundException cnfe;
 
-        ClassLoader cl = QuartzAdon.class.getClassLoader();
+        ClassLoader cl = QuartzAddon.class.getClassLoader();
         try {
             return cl.loadClass(className);
         } catch (ClassNotFoundException e) {
