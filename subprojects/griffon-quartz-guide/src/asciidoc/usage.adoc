@@ -1,0 +1,37 @@
+
+[[_usage]]
+= Usage
+
+The following sections describe how you may use this plugin in a project.
+
+== Configuration
+
+Jobs can be automatically configured and started upon application startup by annotating them with `{link_scheduled}` and
+`@ServiceProviderFor` as shown in the following example
+
+[source,java,options="nowrap"]
+----
+package com.acme;
+
+import org.kordamp.jipsy.ServiceProviderFor;
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
+@ServiceProviderFor(Job.class)
+@Scheduled(cronExpression = "0/2 * * * * ?")
+public class HelloWorldJob implements Job {
+    @Override
+    public void execute(JobExecutionContext context) throws JobExecutionException {
+        System.out.println("Job well done!");
+    }
+}
+----
+
+Jobs defined in this way can participate in Dependency Injection. You may also obtain a reference to the `org.quartz.Scheduler`
+instance and manually schedule a `Job`.
+

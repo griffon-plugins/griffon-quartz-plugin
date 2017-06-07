@@ -26,7 +26,6 @@ import javax.annotation.Nonnull;
 import java.util.TimeZone;
 
 import static griffon.plugins.quartz.Scheduled.DEFAULT;
-import static griffon.util.GriffonClassUtils.requireState;
 import static java.lang.String.format;
 import static java.util.TimeZone.getDefault;
 import static org.quartz.CronScheduleBuilder.cronSchedule;

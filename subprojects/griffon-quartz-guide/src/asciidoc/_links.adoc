@@ -1,2 +1,4 @@
 
 :link_quartz: link:http://www.quartz-scheduler.org[Quartz Scheduler, window="_blank"]
+:link_scheduled: link:api/griffon/plugins/quartz/Scheduled.html[@Scheduled, window="_blank"]
+
