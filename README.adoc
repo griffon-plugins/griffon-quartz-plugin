@@ -9,6 +9,11 @@ image:https://api.bintray.com/packages/griffon/griffon-plugins/{project-name}/im
 
 ---
 
+image:https://img.shields.io/gitter/room/griffon/griffon.js.svg[link="https://gitter.im/griffon/griffon]
+image:https://img.shields.io/badge/donations-Patreon-orange.svg[https://www.patreon.com/user?u=6609318]
+
+---
+
 This plugin allows your Griffon application to schedule jobs to be executed using a specified interval or
 cron expression. The underlying system uses the http://www.quartz-scheduler.org[Quartz Scheduler, window="_blank"].
 
