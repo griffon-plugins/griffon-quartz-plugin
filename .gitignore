@@ -10,3 +10,4 @@ out
 .classpath
 .settings
 .lazybones
+.DS_Store

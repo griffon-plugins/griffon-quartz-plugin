@@ -1,11 +1,13 @@
 /*
- * Copyright 2014-2017 the original author or authors.
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2014-2020 The author and/or original authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,6 +17,7 @@
  */
 package org.codehaus.griffon.runtime.quartz;
 
+import griffon.annotations.core.Nonnull;
 import org.quartz.Job;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
@@ -22,7 +25,6 @@ import org.quartz.SchedulerException;
 import org.quartz.Trigger;
 import org.quartz.TriggerKey;
 
-import javax.annotation.Nonnull;
 import java.util.TimeZone;
 
 import static griffon.plugins.quartz.Scheduled.DEFAULT;
@@ -122,7 +124,6 @@ public final class JobSchedulerBuilder {
      * Sets the {@code Job} name, must be unique within the group.
      *
      * @param jobName The {@code Job} name, must be unique within the group
-     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withJobName(String jobName) {
@@ -134,7 +135,6 @@ public final class JobSchedulerBuilder {
      * Sets the {@code Job} group.
      *
      * @param jobGroup The {@code Job} group
-     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withJobGroup(String jobGroup) {
@@ -148,7 +148,6 @@ public final class JobSchedulerBuilder {
      * encountered.
      *
      * @param requestRecovery The activation flag
-     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withRequestRecovery(boolean requestRecovery) {
@@ -161,7 +160,6 @@ public final class JobSchedulerBuilder {
      * orphaned (no {@code Trigger}s point to it).
      *
      * @param storeDurably The activation flag
-     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withStoreDurably(boolean storeDurably) {
@@ -173,7 +171,6 @@ public final class JobSchedulerBuilder {
      * Sets the {@code Trigger} name, must be unique within the group.
      *
      * @param triggerName The {@code Trigger} name, must be unique within the group
-     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withTriggerName(String triggerName) {
@@ -185,7 +182,6 @@ public final class JobSchedulerBuilder {
      * Sets the {@code Trigger} group.
      *
      * @param triggerGroup The {@code Trigger} group
-     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withTriggerGroup(String triggerGroup) {
@@ -197,7 +193,6 @@ public final class JobSchedulerBuilder {
      * Sets the cron expression to base the schedule on.
      *
      * @param cronExpression The cron expression to base the schedule on
-     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withCronExpression(String cronExpression) {
@@ -211,7 +206,6 @@ public final class JobSchedulerBuilder {
      *
      * @param timeZone The time zone for which the {@code cronExpression}
      *                 of this {@code CronTrigger} will be resolved.
-     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withTimeZone(TimeZone timeZone) {
@@ -225,7 +219,6 @@ public final class JobSchedulerBuilder {
      * first.
      *
      * @param priority The {@code Trigger}'s priority
-     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withPriority(int priority) {
@@ -243,7 +236,6 @@ public final class JobSchedulerBuilder {
      * or {@link #withTimeZone(TimeZone)}
      *
      * @param trigger The {@code Trigger} to associate with the {@code Job}
-     *
      * @return This builder instance
      */
     public JobSchedulerBuilder withTrigger(Trigger trigger) {
@@ -268,7 +260,6 @@ public final class JobSchedulerBuilder {
      * <p/>
      *
      * @param scheduler The given {@code Scheduler}
-     *
      * @throws SchedulerException If any error occurs
      */
     public void schedule(@Nonnull Scheduler scheduler) throws SchedulerException {

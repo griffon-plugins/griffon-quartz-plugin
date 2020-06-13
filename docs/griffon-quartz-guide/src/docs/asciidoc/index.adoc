@@ -1,13 +1,13 @@
 = {project-title}
 :author: {project-author}
 :revnumber: {project-version}
-:toclevels: 10
+:toclevels: 3
+:docinfo1:
 
 include::_links.adoc[]
 
 :leveloffset: 1
 include::introduction.adoc[]
-include::usage.adoc[]
 include::configuration.adoc[]
 include::modules.adoc[]
 
