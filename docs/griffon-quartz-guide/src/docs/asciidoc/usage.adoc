@@ -13,7 +13,7 @@ Jobs can be automatically configured and started upon application startup by ann
 ----
 package com.acme;
 
-import org.kordamp.jipsy.ServiceProviderFor;
+import org.kordamp.jipsy.annotations.ServiceProviderFor;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
